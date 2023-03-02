@@ -16,14 +16,16 @@ const app = {
         };
     },
     methods: {
-        checkuLogin() {
+        checkLogin() {
             const loginCheckurl = `${site}api/user/check`;
             axios.post(loginCheckurl)
                 .then(response => {
                     // 觸發函式getProducts()
                     this.getProducts();
                 })
-                .catch(() => {
+                .catch((error) => {
+                    // 驗證登入是否具有此api_path權限，若否跳出登入失敗視窗
+                    alert(error.data.message);
                     // 轉址(轉跳到指定頁面)
                     window.location = './login.html';
                 });
@@ -49,7 +51,7 @@ const app = {
         // 加入一次即可!!!後續axios會採用預設方式登入API
         // defaults表示每次發出token時，在headers加入屬性'Authorization'後方代入值(token)
         axios.defaults.headers.common['Authorization'] = myCookie;
-        this.checkuLogin();
+        this.checkLogin();
     },
 };
 

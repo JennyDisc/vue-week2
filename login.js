@@ -29,9 +29,11 @@ const app = {
                     document.cookie = `hexToken=${token}; expires=${new Date(expired)};`;
 
                     // 轉址(轉跳到指定頁面)
-                    window.location='./products.html';
+                    window.location = './products.html';
                 })
                 .catch(error => {
+                    // 驗證登入失敗跳出視窗
+                    alert(error.data.message);
                     console.dir(error);
                 });
         },
