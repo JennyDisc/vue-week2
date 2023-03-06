@@ -34,12 +34,13 @@ const app = {
             const getProducturl = `${site}api/${api_path}/admin/products`;
             axios.get(getProducturl)
                 .then(response => {
-                    console.log(response);
+                    // console.log(response);
                     // 把產品列表API資料儲存到data的products屬性裡
                     this.products=response.data.products;
                 })
                 .catch(error => {
-                    console.dir(error);
+                    // console.dir(error);
+                    alert(error.data.message);
                 });
         },
     },

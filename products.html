@@ -60,9 +60,12 @@
                                     {{ product.price }}
                                 </td>
                                 <td width="150">
+                                    <!--  第一種寫法：v-if v-else  -->
                                     <!--  如果product中有這個is_enabled屬性就執行這段，若否則執行v-else  -->
-                                    <span class="text-success" v-if="product.is_enabled">啟用</span>
-                                    <span v-else>未啟用</span>
+                                    <!-- <span class="text-success" v-if="product.is_enabled">啟用</span>
+                                    <span v-else>未啟用</span> -->
+                                    <!--  第二種寫法：三元運算子  -->
+                                    <span class="text-success">{{ product.is_enabled ? '啟用' : '未啟用' }}</span>
                                 </td>
                                 <td width="120">
                                     <!--  把當前所選擇的產品資料(product)儲存到tempProduct中  -->
@@ -105,7 +108,7 @@
                                 v-for="(productimg,id) in tempProduct.imagesUrl" :key="id">
                         </template>
                     </template>
-                    <p class="text-secondary">請選擇一個商品查看</p>
+                    <p v-else class="text-secondary">請選擇一個商品查看</p>
                 </div>
             </div>
         </div>

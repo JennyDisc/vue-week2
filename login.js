@@ -20,7 +20,7 @@ const app = {
             // axios.post(,)發送請求。第二個參數紀錄要傳送給對方伺服器的資料內容
             axios.post(loginUrl, this.user)
                 .then(response => {
-                    console.log(response);
+                    // console.log(response);
 
                     // 儲存 Token
                     const { expired, token } = response.data; // 解構寫法。表示expired與token來自response.data
@@ -34,7 +34,7 @@ const app = {
                 .catch(error => {
                     // 驗證登入失敗跳出視窗
                     alert(error.data.message);
-                    console.dir(error);
+                    // console.dir(error);
                 });
         },
     },
